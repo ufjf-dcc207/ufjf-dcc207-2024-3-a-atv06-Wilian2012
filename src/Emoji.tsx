@@ -30,6 +30,29 @@ export default  function Emoji (){
         console.log("toSick()!");
         setSituacao("sick");
     }
+
+    function toTodos(){
+ 
+        console.log("toTodos()!");
+    switch(situacao){
+
+        case "haapy":
+        setSituacao("sick");
+        break;
+
+        case "sick":  
+        setSituacao( "happy");
+        break;
+
+        case "dead":
+        setSituacao( "happy");
+        break;
+      
+         default:
+            setSituacao("happy");
+   
+    }
+    }
     return (
         <div className="emoji">
             <div className="situacao">{EMOJIS.get(situacao)|| "😭" }</div>
@@ -37,6 +60,7 @@ export default  function Emoji (){
                 <button onClick={toDead}>MOrto</button>
                 <button onClick={toHappy}>Vivo</button>
                 <button onClick={toSick}>Chorao</button>
+                <button onClick={toTodos}>todos</button>
             </div>
             </div>
     );
