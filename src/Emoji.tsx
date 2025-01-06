@@ -24,12 +24,19 @@ export default  function Emoji (){
         console.log("toDead()!");
         setSituacao( "dead");
     }
+
+    function toSick(){
+
+        console.log("toSick()!");
+        setSituacao("sick");
+    }
     return (
         <div className="emoji">
-            <div className="situacao">{EMOJIS.get(situacao)|| "😭" }</div>;
+            <div className="situacao">{EMOJIS.get(situacao)|| "😭" }</div>
             <div className="acoes">
                 <button onClick={toDead}>MOrto</button>
                 <button onClick={toHappy}>Vivo</button>
+                <button onClick={toSick}>Chorao</button>
             </div>
             </div>
     );
