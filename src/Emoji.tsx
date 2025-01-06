@@ -16,6 +16,7 @@ export default  function Emoji (){
     function toHappy(){
         console.log("toHappy()!");
         setSituacao( "happy");
+        //
     }
 
     function toDead(){
