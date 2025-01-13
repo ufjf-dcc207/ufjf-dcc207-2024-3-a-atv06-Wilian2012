@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Emoji.css";
+import Atributo from "./Atributo";
 
 const EMOJIS = new Map<string, string>([
 
@@ -33,7 +34,7 @@ export default  function Emoji (){
 
     function toTodos(){
  
-        console.log("toTodos()!");
+        
     switch(situacao){
 
         case "haapy":
@@ -41,7 +42,7 @@ export default  function Emoji (){
         break;
 
         case "sick":  
-        setSituacao( "happy");
+        setSituacao( "dead");
         break;
 
         case "dead":
@@ -50,12 +51,14 @@ export default  function Emoji (){
       
          default:
             setSituacao("happy");
+            break;
    
     }
     }
     return (
         <div className="emoji">
-            <div className="situacao">{EMOJIS.get(situacao)|| "😭" }</div>
+            <div className="situacao">{EMOJIS.get(situacao)|| "🤨" }</div>
+            <div className="atributos"><Atributo icone ="❤️" /></div>
             <div className="acoes">
                 <button onClick={toDead}>MOrto</button>
                 <button onClick={toHappy}>Vivo</button>

@@ -1,5 +1,9 @@
 .emoji{
-
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0.5;
+    align-items: center;
+    justify-content: center;
    .situacao {
     font-size: 4em;
    }
