@@ -1,11 +1,8 @@
-
-.emoji{
-    display:grid;
-    grid-template-columns: repeat(3,1fr);
-    
-    .situacao{
+.vidas{
+    .vida{
         font-size: 4em;
     }
+    
     
     .acoes{
         display: flex ;

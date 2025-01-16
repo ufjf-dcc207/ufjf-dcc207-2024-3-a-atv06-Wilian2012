@@ -1,70 +1,73 @@
-import { useState } from "react";
+
 import "./Emoji.css";
 import Atributo from "./Atributo";
+import { useState } from "react";
 
-const EMOJIS = new Map<string, string>([
 
-["happy","😂"],
-["sick", "😭"],
-["dead","💀"],
+const EMOJIS = new Map <string,string>(
+    [
+        ["happy", "🙂"],
+        ["sick", "🤢"],
+        ["dead", "😵"],
+        ["sad", "😞"]
+    ]
+);
 
-]);
+export default function Emoji(){
+    const[situacao, setSituacao] = useState("happy");
+    const[saude, setSaude] = useState(4);
+    const[energia, setEnergia] = useState(3);
+    const[comida, setComida] = useState(2);
+    const[agua, setAgua] = useState(1);
+    const[luz, setLuz] = useState(true);
+    
 
-export default  function Emoji (){
-
-     const [situacao, setSituacao]= useState("happy");
-
-    function toHappy(){
-        console.log("toHappy()!");
-        setSituacao( "happy");
-        //
+    function onAlimentar(){
+        setComida(Math.min(comida+1,5));
     }
 
-    function toDead(){
-
-        console.log("toDead()!");
-        setSituacao( "dead");
+    function onHidratar(){
+        setAgua(Math.min(agua+1,5));
     }
 
-    function toSick(){
-
-        console.log("toSick()!");
-        setSituacao("sick");
+    function onLigaDesligaLuz(){
+        setLuz(!luz);
     }
 
-    function toTodos(){
- 
-        
-    switch(situacao){
-
-        case "haapy":
-        setSituacao("sick");
-        break;
-
-        case "sick":  
-        setSituacao( "dead");
-        break;
-
-        case "dead":
-        setSituacao( "happy");
-        break;
-      
-         default:
-            setSituacao("happy");
-            break;
-   
+    function onCiclo(){
+        setComida(Math.max(0,comida-1));
+        setAgua(Math.max(0,agua-1));
+        if(luz){
+            setEnergia(Math.max(0,energia-1));
+        }else{
+            setEnergia(Math.min(5,energia+1));
+        }
+        if(comida===0){
+            setSaude(prevSaude=>Math.max(0,prevSaude-1));
+        }
+        if(agua===0){
+            setSaude(prevSaude=>Math.max(0,prevSaude-1));
+        }
     }
-    }
-    return (
+
+    return(
         <div className="emoji">
-            <div className="situacao">{EMOJIS.get(situacao)|| "🤨" }</div>
-            <div className="atributos"><Atributo icone ="❤️" /></div>
+            <div className="situacao">{EMOJIS.get(situacao) || "🫥"}</div>
+            <div className="atributo">
+                <Atributo icone ="💙" valor={saude}/>
+                <Atributo icone ="⚡" valor={energia}/>
+                <Atributo icone ="🍖" valor={comida}/>
+                <Atributo icone ="💧" valor={agua}/>
+                
+            </div>
             <div className="acoes">
-                <button onClick={toDead}>MOrto</button>
-                <button onClick={toHappy}>Vivo</button>
-                <button onClick={toSick}>Chorao</button>
-                <button onClick={toTodos}>todos</button>
+                <button onClick={onAlimentar}>Dar comida</button>
+                <button onClick={onHidratar}>Dar água</button>
+                <button onClick={onLigaDesligaLuz}>
+                    <span style={{filter:luz?"":"grayscale(100%)"}}>💡</span>
+                    {luz?"Apagar":"Acender"} a luz</button>
+                <button onClick={onCiclo}>Ciclo</button>
             </div>
-            </div>
-    );
+        </div>
+    )       
 }
