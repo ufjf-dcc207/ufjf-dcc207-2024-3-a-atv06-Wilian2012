@@ -15,11 +15,14 @@ const EMOJIS = new Map <string,string>(
 
 export default function Emoji(){
     const[situacao, setSituacao] = useState("happy");
+    
     const[saude, setSaude] = useState(4);
     const[energia, setEnergia] = useState(3);
     const[comida, setComida] = useState(2);
     const[agua, setAgua] = useState(1);
     const[luz, setLuz] = useState(true);
+
+    
     
 
     function onAlimentar(){
