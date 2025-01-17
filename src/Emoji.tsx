@@ -38,8 +38,15 @@ export default function Emoji(){
     }
 
     function onCiclo(){
+
+        if(!luz && agua >0 && comida >0){
+
+            setSaude(Saude=>Math.min(5,Saude+1));
+        }
+
         setComida(Math.max(0,comida-1));
         setAgua(Math.max(0,agua-1));
+   
         if(luz){
             setEnergia(Math.max(0,energia-1));
         }else{
@@ -51,7 +58,29 @@ export default function Emoji(){
         if(agua===0){
             setSaude(prevSaude=>Math.max(0,prevSaude-1));
         }
+
+          
+       
+
+        if(energia <=2  ){
+
+            setSituacao("sad");
+        }
+        if(saude <= 2){
+
+            setSituacao("sick");
+        }
+
+        if(saude ===0){
+            setSituacao("dead");
+        }
+       
+     
+
+        
     }
+
+      
 
     return(
         <div className="emoji">

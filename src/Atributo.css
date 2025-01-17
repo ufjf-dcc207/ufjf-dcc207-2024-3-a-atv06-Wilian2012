@@ -1,11 +1,5 @@
+.inativo{
 
-.atributo{
-    display: flex;
-    .ativo{
-        scale:1.2em;
-    }
-    .inativo{
-        filter:grayscale(100%);
-        opacity: 0.4;
-    }
+    filter: grayscale(100%);
+    opacity: 0.4;
 }
